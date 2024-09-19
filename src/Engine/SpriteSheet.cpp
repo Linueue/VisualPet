@@ -24,10 +24,6 @@ namespace Engine
     void SpriteSheet::UseSubTexture(const uint32_t vbo, const uint32_t widthIdx, const uint32_t heightIdx)
     {
         const std::array<glm::vec2, 4> offset = GetOffset(widthIdx, heightIdx);
-        for(const auto &data : offset)
-        {
-            std::cout << data << "\n";
-        }
         Renderer::SetSubData(vbo, offset);
     }
 

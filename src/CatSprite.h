@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Engine/SpriteAnimation.h"
 #include "Engine/GameLayer/SpriteGameObject.h"
 
 enum class CatState
@@ -15,7 +16,11 @@ public:
     void Construct() override;
     void Update(const float deltaTime) override;
 
+    void Idle();
+    void Running();
+
 private:
     CatState m_State;
-    uint32_t idx;
+    Engine::SpriteAnimation m_IdleAnimation;
+    Engine::SpriteAnimation m_RunningAnimation;
 };
