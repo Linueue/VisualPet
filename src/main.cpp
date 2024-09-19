@@ -8,7 +8,7 @@ class App : public Engine::Application
 public:
     App()
     {
-        CreateWindow( { "VisualPet", 800, 700, false } );
+        CreateWindow( { "VisualPet", 800, 700, true } );
     }
 
     void Run() override

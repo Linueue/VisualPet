@@ -17,4 +17,5 @@ public:
 
 private:
     CatState m_State;
+    uint32_t idx;
 };

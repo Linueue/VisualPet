@@ -17,6 +17,8 @@ namespace Engine
 
         void UseTexture() const;
 
+        inline const TextureSpecs& GetTextureSpecs() const { return m_TextureSpecs; }
+
     private:
         uint32_t m_TextureId;
         TextureSpecs m_TextureSpecs;

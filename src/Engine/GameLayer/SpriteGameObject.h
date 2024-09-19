@@ -2,6 +2,8 @@
 
 #include <Engine/Shader.h>
 #include <Engine/Texture2D.h>
+#include <Engine/SpriteSheet.h>
+#include <Engine/Renderer.h>
 
 #include <unordered_map>
 #include <vector>
@@ -18,11 +20,12 @@ namespace Engine
         virtual void Update(const float deltaTime) {}
         virtual void Render();
 
+        void UseSubTexture(const uint32_t widthIdx, const uint32_t heightIdx);
+
         template <typename T>
-        void AddTexture(const T state, const char* fileName)
+        void AddTexture(const T state, const char* fileName, const uint32_t widthMaxIdx, const uint32_t heightMaxIdx)
         {
-            std::cout << "added\n";
-            m_Textures[static_cast<int32_t>(state)] = std::make_unique<Texture2D>(fileName);
+            m_Textures[static_cast<int32_t>(state)] = std::make_unique<SpriteSheet>(widthMaxIdx, heightMaxIdx, std::make_shared<Texture2D>(fileName));
         }
 
         template <typename T>
@@ -40,9 +43,9 @@ namespace Engine
         }
 
     protected:
-        uint32_t m_Vao;
+        Bindings m_Bindings;
         std::shared_ptr<Shader> m_Shader;
         int32_t m_CurrentState;
-        std::unordered_map<int32_t, std::unique_ptr<Texture2D>> m_Textures;
+        std::unordered_map<int32_t, std::unique_ptr<SpriteSheet>> m_Textures;
     };
 }

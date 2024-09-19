@@ -2,16 +2,16 @@
 
 #include "Shader.h"
 
+#include <array>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
 namespace Engine
 {
-    struct Vertex
+    struct Bindings
     {
-        glm::vec3 Position;
-        glm::vec2 TexCoord;
+        uint32_t Vao, VertexVbo, TexCoordVbo;
     };
 
     class Renderer
@@ -20,7 +20,8 @@ namespace Engine
         static void Init();
         static void DeInit();
 
-        static const int32_t ConstructSprite();
+        static const Bindings ConstructSprite();
         static void DrawSprite(const uint32_t vao, const Shader &shader);
+        static void SetSubData(const uint32_t vbo, const std::array<glm::vec2, 4> &data);
     };
 }
