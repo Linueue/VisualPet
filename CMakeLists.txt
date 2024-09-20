@@ -16,6 +16,10 @@ add_executable(VisualPet ${SOURCES_CPP})
 add_custom_target(assets COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_SOURCE_DIR}/assets.cmake)
 add_dependencies(VisualPet assets)
 
+if(CMAKE_BUILD_TYPE STREQUAL "Release" AND WIN32)
+    target_link_options(VisualPet PRIVATE "LINKER:/SUBSYSTEM:WINDOWS,/ENTRY:mainCRTStartup")
+endif()
+
 target_include_directories(VisualPet PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/src"
     "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/glfw/include"

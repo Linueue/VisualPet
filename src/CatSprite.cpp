@@ -19,7 +19,7 @@ void CatSprite::Construct()
 
     m_Position.x = Engine::Random::RandRange(0, int32_t(m_ScreenBounds.x));
     m_Position.y = 0.0f;
-    m_Flipped = false;
+    m_Flipped = (Engine::Random::Value() > 0.5f);
 }
 
 void CatSprite::Update(const float deltaTime)
