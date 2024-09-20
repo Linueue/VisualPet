@@ -47,5 +47,8 @@ namespace Engine
         std::shared_ptr<Shader> m_Shader;
         int32_t m_CurrentState;
         std::unordered_map<int32_t, std::unique_ptr<SpriteSheet>> m_Textures;
+        glm::vec2 m_Position;
+        glm::vec2 m_ScreenBounds;
+        bool m_Flipped;
     };
 }

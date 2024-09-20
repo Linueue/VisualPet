@@ -28,12 +28,14 @@ namespace Engine
 
         const float currentTime = glfwGetTime();
 
-        bool isFinished = (m_CurrentIdx == (m_Animations.size() - 1));
+        bool isFinished = false;
 
         if(currentTime - m_StartTime >= animation.Duration)
         {
             m_CurrentIdx = (m_CurrentIdx + 1) % m_Animations.size();
             m_StartTime = currentTime;
+
+            isFinished = (m_CurrentIdx == 0);
         }
 
         return { static_cast<uint32_t>(m_CurrentIdx), isFinished };

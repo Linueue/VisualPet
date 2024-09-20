@@ -22,10 +22,10 @@ namespace Engine
     const Bindings Renderer::ConstructSprite()
     {
         const glm::vec3 vertices[] = {
-            glm::vec3(-0.5f, -0.5f, 0.0f),
-            glm::vec3(-0.5f,  0.5f, 0.0f),
-            glm::vec3( 0.5f,  0.5f, 0.0f),
-            glm::vec3( 0.5f, -0.5f, 0.0f),
+            glm::vec3(-1.0f, -1.0f, 0.0f),
+            glm::vec3(-1.0f,  1.0f, 0.0f),
+            glm::vec3( 1.0f,  1.0f, 0.0f),
+            glm::vec3( 1.0f, -1.0f, 0.0f),
         };
 
         const glm::vec2 texCoords[] = {

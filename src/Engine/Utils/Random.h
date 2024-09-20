@@ -8,6 +8,7 @@ namespace Engine
     {
     public:
         static const float Value();
+        static const int32_t RandRange(const int32_t min, const int32_t max);
 
     private:
         static std::random_device s_Device;

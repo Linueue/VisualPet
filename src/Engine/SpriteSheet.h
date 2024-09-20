@@ -12,8 +12,8 @@ namespace Engine
     public:
         SpriteSheet(const uint32_t widthMaxIdx, const uint32_t heightMaxIdx, const std::shared_ptr<Texture2D> &texture);
 
-        void UseSubTexture(const uint32_t vbo, const uint32_t widthIdx, const uint32_t heightIdx);
-        const std::array<glm::vec2, 4> GetOffset(const uint32_t widthIdx, const uint32_t heightIdx);
+        void UseSubTexture(const uint32_t vbo, const uint32_t widthIdx, const uint32_t heightIdx, const bool flipped);
+        const std::array<glm::vec2, 4> GetOffset(const uint32_t widthIdx, const uint32_t heightIdx, const bool flipped);
 
         inline void UseTexture() const { m_Texture->UseTexture(); }
 

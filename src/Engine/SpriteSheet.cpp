@@ -21,19 +21,31 @@ namespace Engine
         m_HeightOffset /= textureSpecs.Height;
     }
 
-    void SpriteSheet::UseSubTexture(const uint32_t vbo, const uint32_t widthIdx, const uint32_t heightIdx)
+    void SpriteSheet::UseSubTexture(const uint32_t vbo, const uint32_t widthIdx, const uint32_t heightIdx, const bool flipped)
     {
-        const std::array<glm::vec2, 4> offset = GetOffset(widthIdx, heightIdx);
+        const std::array<glm::vec2, 4> offset = GetOffset(widthIdx, heightIdx, flipped);
         Renderer::SetSubData(vbo, offset);
     }
 
-    const std::array<glm::vec2, 4> SpriteSheet::GetOffset(const uint32_t widthIdx, const uint32_t heightIdx)
+    const std::array<glm::vec2, 4> SpriteSheet::GetOffset(const uint32_t widthIdx, const uint32_t heightIdx, const bool flipped)
     {
+        if(!flipped)
+        {
+            const std::array<glm::vec2, 4> offset = {
+                glm::vec2(m_WidthOffset *  widthIdx,      m_HeightOffset * (heightIdx + 1)),
+                glm::vec2(m_WidthOffset *  widthIdx,      m_HeightOffset *  heightIdx),
+                glm::vec2(m_WidthOffset * (widthIdx + 1), m_HeightOffset *  heightIdx),
+                glm::vec2(m_WidthOffset * (widthIdx + 1), m_HeightOffset * (heightIdx + 1)),
+            };
+
+            return offset;
+        }
+
         const std::array<glm::vec2, 4> offset = {
-            glm::vec2(m_WidthOffset *  widthIdx,      m_HeightOffset * (heightIdx + 1)),
-            glm::vec2(m_WidthOffset *  widthIdx,      m_HeightOffset *  heightIdx),
-            glm::vec2(m_WidthOffset * (widthIdx + 1), m_HeightOffset *  heightIdx),
             glm::vec2(m_WidthOffset * (widthIdx + 1), m_HeightOffset * (heightIdx + 1)),
+            glm::vec2(m_WidthOffset * (widthIdx + 1), m_HeightOffset *  heightIdx),
+            glm::vec2(m_WidthOffset *  widthIdx,      m_HeightOffset *  heightIdx),
+            glm::vec2(m_WidthOffset *  widthIdx,      m_HeightOffset * (heightIdx + 1)),
         };
 
         return offset;

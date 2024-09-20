@@ -3,12 +3,12 @@
 #include "Engine/SpriteAnimation.h"
 #include "Engine/GameLayer/SpriteGameObject.h"
 
-enum class CatState
+enum class FrogState
 {
-    Idle, Running,
+    Idle,
 };
 
-class CatSprite : public Engine::SpriteGameObject
+class FrogSprite : public Engine::SpriteGameObject
 {
 public:
     using Engine::SpriteGameObject::SpriteGameObject;
@@ -17,12 +17,9 @@ public:
     void Update(const float deltaTime) override;
 
     void Idle();
-    void Running();
 
 private:
-    CatState m_State;
+    FrogState m_State;
     Engine::SpriteAnimation m_IdleAnimation;
-    Engine::SpriteAnimation m_RunningAnimation;
     glm::vec2 m_Velocity;
-    int32_t m_RandomCycle;
 };

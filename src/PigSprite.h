@@ -3,12 +3,12 @@
 #include "Engine/SpriteAnimation.h"
 #include "Engine/GameLayer/SpriteGameObject.h"
 
-enum class CatState
+enum class PigState
 {
     Idle, Running,
 };
 
-class CatSprite : public Engine::SpriteGameObject
+class PigSprite : public Engine::SpriteGameObject
 {
 public:
     using Engine::SpriteGameObject::SpriteGameObject;
@@ -20,7 +20,7 @@ public:
     void Running();
 
 private:
-    CatState m_State;
+    PigState m_State;
     Engine::SpriteAnimation m_IdleAnimation;
     Engine::SpriteAnimation m_RunningAnimation;
     glm::vec2 m_Velocity;
